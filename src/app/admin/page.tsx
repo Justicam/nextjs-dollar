@@ -12,7 +12,16 @@ const AdminPage = async () => {
       user: { email: string; id: string; randomKey: string };
     } | null,
   );
-  const stuff = await prisma.stuff.findMany({});
+  const stuff = await prisma.stuff.findMany({
+    select: {
+      id: true,
+      name: true,
+      quantity: true,
+      condition: true,
+      owner: true,
+      value: true, // Ensure the value field is fetched
+    },
+  });
   const users = await prisma.user.findMany({});
 
   return (
@@ -27,6 +36,7 @@ const AdminPage = async () => {
                   <th>Name</th>
                   <th>Quantity</th>
                   <th>Condition</th>
+                  <th>Value</th>
                   <th>Owner</th>
                   <th>Actions</th>
                 </tr>

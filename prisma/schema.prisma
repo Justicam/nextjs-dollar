@@ -38,4 +38,5 @@ model Stuff {
   quantity  Int
   condition Condition
   owner     String
+  value     Int       @default(0)
 }

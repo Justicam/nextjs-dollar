@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 async function main() {
   console.log('Seeding the database');
-  const password = await hash('changeme', 10);
+  const password = await hash('changeme', 10); // PASSWORD
   config.defaultAccounts.forEach(async (account) => {
     let role: Role = 'USER';
     if (account.role === 'ADMIN') {
@@ -42,6 +42,7 @@ async function main() {
         quantity: data.quantity,
         owner: data.owner,
         condition,
+        value: data.value,
       },
     });
   });
